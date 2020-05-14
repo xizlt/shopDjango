@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+{% block content %}
+
+    <div id="filter" data-max-price="{{ max_price.price }}" data-min-price="{{ min_price.price }}"></div>
+    <div class="site-section">
+        <div class="container">
+                        {% if products %}
+                <div class="row" id="products-row">
+                    {% for product in products %}
+                        {% include 'shop/product/ajax_list.html' %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-xl-center">
+                    <br>
+                    <i class="icon-info-circle" style="font-size: 200px"> </i><br>
+                    {% trans 'Not found' %}
+                </div>
+            {% endif %}
+            {% include "pagination.html" with page=products %}
+        </div>
+    </div>
+    <script>
+
+    </script>
+{% endblock %}

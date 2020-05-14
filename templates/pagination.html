@@ -1,0 +1,18 @@
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <div class="site-block-27">
+
+        {% if page.paginator.num_pages != 1 %}
+            <ul>
+                {% if page.has_previous %}
+                    <li><a href="?{{ s }}page={{ page.previous_page_number }}">&lt;</a></li>
+                {% endif %}
+                <li class="active"><span>{{ page.number }}</span></li>
+                {% if page.has_next %}
+                    <li><a href="?{{ s }}page={{ page.next_page_number }}">></a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+</div>

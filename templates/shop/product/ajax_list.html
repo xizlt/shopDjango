@@ -1,0 +1,19 @@
+<div class="col-sm-6 col-lg-4 text-center item mb-4">
+    {% if product.discont %}
+        <span class="tag">Sale</span>
+    {% endif %}
+    <a href="{{ product.get_absolute_url }}">
+        <img src="{{ product.image.url }}" alt="Image">
+    </a>
+    <h3 class="text-dark"><a href="{{ product.get_absolute_url }}">{{ product.name|truncatewords:5 }}</a></h3>
+    <p class="description">
+        {{ product.description|truncatechars:200 }}
+    </p>
+    <p class="price">
+        {% if not product.discont %}
+            €{{ product.price }}
+        {% else %}
+            <del>€{{ product.price }}</del>  €{{ product.discont }}
+        {% endif %}
+    </p>
+</div>
